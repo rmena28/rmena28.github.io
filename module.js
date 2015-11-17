@@ -118,7 +118,7 @@ var userController = app.controller('userController', function ($scope, $http) {
             $scope.pointsB = 0;
             $scope.foulsB = 0;
             $scope.foulsA = 0;
-            
+
             $('.hideable').show();
         }
     };
@@ -137,20 +137,21 @@ var userController = app.controller('userController', function ($scope, $http) {
         $scope.equipoA = JSON.parse(localStorage.getItem('teamA'));
         $scope.equipoB = JSON.parse(localStorage.getItem('teamB'));
 
-        $scope.pointsA = localStorage.getItem('pointsA');
-        if ($scope.pointsA === undefined || $scope.pointsA === null) {
+        $scope.pointsA = parseInt(localStorage.getItem('pointsA'));
+        console.log($scope.pointsA);
+        if ($scope.pointsA === undefined || $scope.pointsA === null || isNaN($scope.pointsA)) {
             $scope.pointsA = 0;
         }
-        $scope.pointsB = localStorage.getItem('pointsB');
-        if ($scope.pointsB === undefined || $scope.pointsB === null) {
+        $scope.pointsB = parseInt(localStorage.getItem('pointsB'));
+        if ($scope.pointsB === undefined || $scope.pointsB === null || isNaN($scope.pointsB)) {
             $scope.pointsB = 0;
         }
-        $scope.foulsB = localStorage.getItem('foulsA');
-        if ($scope.foulsB === undefined || $scope.foulsB === null) {
+        $scope.foulsB = parseInt(localStorage.getItem('foulsB'));
+        if ($scope.foulsB === undefined || $scope.foulsB === null || isNaN($scope.foulsB)) {
             $scope.foulsB = 0;
         }
-        $scope.foulsA = localStorage.getItem('foulsB');
-        if ($scope.foulsA === undefined || $scope.foulsA === null) {
+        $scope.foulsA = parseInt(localStorage.getItem('foulsA'));
+        if ($scope.foulsA === undefined || $scope.foulsA === null || isNaN($scope.foulsA)) {
             $scope.foulsA = 0;
         }
     }
