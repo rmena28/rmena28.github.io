@@ -2,14 +2,17 @@ var app = angular.module('sharkModule', []);
 
 var userController = app.controller('userController', function ($scope, $http) {
     $scope.members = JSON.parse(localStorage.getItem('members'));
+    restoreCurrentGame();
     $scope.createMember = {};
-    $scope.pointsA = 0;
-    $scope.pointsB = 0;
-    $scope.foulsB = 0;
-    $scope.foulsA = 0;
-    $scope.equipoB = [];
-    $scope.equipoA = [];
     $scope.selectedPlayer = {};
+
+    if ($scope.equipoA === undefined || $scope.equipoA === null) {
+        $scope.equipoA = [];
+    }
+
+    if ($scope.equipoB === undefined || $scope.equipoB === null) {
+        $scope.equipoB = [];
+    }
 
     if ($scope.members === undefined || $scope.members === null) {
         $scope.members = [
@@ -26,7 +29,7 @@ var userController = app.controller('userController', function ($scope, $http) {
             {number: 18, name: 'Marcos', lastname: 'Vasquez'},
             {number: 18, name: 'Jose', lastname: 'Moya'},
             {number: 20, name: 'Gabriel', lastname: 'Ferrarese'},
-            {number: 21, name: 'Enmanuel', lastname: 'Medrano'},
+            {number: 21, name: 'Emanuel', lastname: 'Medrano'},
             {number: 23, name: 'Snailin', lastname: 'Inoa'},
             {number: 24, name: 'Hamlet', lastname: 'Maldonado'},
             {number: 26, name: 'Aneudy', lastname: 'Mota'},
@@ -84,8 +87,73 @@ var userController = app.controller('userController', function ($scope, $http) {
         } else {
             alert('Ya hay 5 jugadores en el equipo A');
         }
-
+        saveCurrentGame();
     };
+
+    $scope.removePlayerFromTeam = function (player) {
+        var index = $scope.equipoA.indexOf(player);
+        if (index > -1) {
+            $scope.equipoA.splice(index, 1);
+        } else {
+            index = $scope.equipoB.indexOf(player);
+            if (index > -1) {
+                $scope.equipoB.splice(index, 1);
+            }
+        }
+        saveCurrentGame();
+    };
+    $scope.reset = function () {
+        var reiniciar = confirm("Seguro que desea reiniciar?");
+        if (reiniciar) {
+            localStorage.removeItem('teamA');
+            localStorage.removeItem('teamB');
+            localStorage.removeItem('pointsA');
+            localStorage.removeItem('pointsB');
+            localStorage.removeItem('foulsA');
+            localStorage.removeItem('foulsB');
+
+            $scope.equipoA = [];
+            $scope.equipoB = [];
+            $scope.pointsA = 0;
+            $scope.pointsB = 0;
+            $scope.foulsB = 0;
+            $scope.foulsA = 0;
+            
+            $('.hideable').show();
+        }
+    };
+
+    function saveCurrentGame() {
+        localStorage.setItem('teamA', JSON.stringify($scope.equipoA));
+        localStorage.setItem('teamB', JSON.stringify($scope.equipoB));
+        localStorage.setItem('pointsA', $scope.pointsA);
+        localStorage.setItem('pointsB', $scope.pointsB);
+        localStorage.setItem('foulsA', $scope.foulsA);
+        localStorage.setItem('foulsB', $scope.foulsB);
+
+    }
+
+    function restoreCurrentGame() {
+        $scope.equipoA = JSON.parse(localStorage.getItem('teamA'));
+        $scope.equipoB = JSON.parse(localStorage.getItem('teamB'));
+
+        $scope.pointsA = localStorage.getItem('pointsA');
+        if ($scope.pointsA === undefined || $scope.pointsA === null) {
+            $scope.pointsA = 0;
+        }
+        $scope.pointsB = localStorage.getItem('pointsB');
+        if ($scope.pointsB === undefined || $scope.pointsB === null) {
+            $scope.pointsB = 0;
+        }
+        $scope.foulsB = localStorage.getItem('foulsA');
+        if ($scope.foulsB === undefined || $scope.foulsB === null) {
+            $scope.foulsB = 0;
+        }
+        $scope.foulsA = localStorage.getItem('foulsB');
+        if ($scope.foulsA === undefined || $scope.foulsA === null) {
+            $scope.foulsA = 0;
+        }
+    }
 
     $scope.addUserTeamB = function (member) {
         var player = {};
@@ -108,9 +176,10 @@ var userController = app.controller('userController', function ($scope, $http) {
         }
         if ($scope.equipoB.length < 5) {
             $scope.equipoB.push(player);
-        }else{
+        } else {
             alert('Ya hay 5 jugadores en el equipo B');
         }
+        saveCurrentGame();
     };
 
     $scope.addPoints = function (team, player, point) {
@@ -120,7 +189,7 @@ var userController = app.controller('userController', function ($scope, $http) {
         } else if (team === 'B') {
             $scope.pointsB += point;
         }
-
+        saveCurrentGame();
     };
 
     $scope.addFoul = function (team, player, foul) {
@@ -130,7 +199,7 @@ var userController = app.controller('userController', function ($scope, $http) {
         } else if (team === 'B') {
             $scope.foulsB += foul;
         }
-
+        saveCurrentGame();
     };
 
     $scope.removePoints = function (team, player, point) {
@@ -140,6 +209,7 @@ var userController = app.controller('userController', function ($scope, $http) {
         } else if (team === 'B') {
             $scope.pointsB -= point;
         }
+        saveCurrentGame();
     };
 
     $scope.removeFoul = function (team, player, foul) {
@@ -149,6 +219,7 @@ var userController = app.controller('userController', function ($scope, $http) {
         } else if (team === 'B') {
             $scope.foulsB -= foul;
         }
+        saveCurrentGame();
     };
 
     $scope.removeItem = function (member) {
@@ -163,5 +234,6 @@ var userController = app.controller('userController', function ($scope, $http) {
         if (index > -1) {
             $scope.members.splice(index, 1);
         }
+        saveCurrentGame();
     };
 });
