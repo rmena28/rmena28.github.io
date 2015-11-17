@@ -10,7 +10,7 @@
                 padding: 2px 8px !important;
             }
             .btn{
-                padding: 4px 5px !important;
+                padding: 6px 10px !important;
                 font-size: 10px !important;
             }
         </style>
@@ -35,8 +35,8 @@
                         <td>{{member.number}}</td>
                         <td>{{member.name}} {{member.lastName}}</td>
                         <td>
-                            <a href="#" class="btn btn-info" ng-click="addUserTeamA(member)">+A</a>
-                            <a href="#" class="btn btn-info" ng-click="addUserTeamB(member)">+B</a>
+                            <button class="btn btn-info" ng-click="addUserTeamA(member)">+A</button>
+                            <button class="btn btn-info" ng-click="addUserTeamB(member)">+B</button>
                         </td>
                     </tr>
                 </tbody>
@@ -86,21 +86,21 @@
                         <td>{{jugador.member.name}}</td>
                         <td>{{jugador.points}}</td>
                         <td>
-                            <a class="btn btn-small btn-success"  href="#" ng-click="addPoints('A',jugador, 1)">1</a>
-                            <a class="btn btn-small btn-success"  href="#" ng-click="addPoints('A',jugador, 2)">2</a>
-                            <a class="btn btn-small btn-success"  href="#" ng-click="addPoints('A',jugador, 3)">3</a>
-                            <a class="btn btn-small btn-danger"  href="#" ng-click="removePoints('A',jugador, 1)">1</a>
+                            <button class="btn btn-small btn-success"  ng-click="addPoints('A', jugador, 1)">1</button>
+                            <button class="btn btn-small btn-success" ng-click="addPoints('A', jugador, 2)">2</button>
+                            <button class="btn btn-small btn-success" ng-click="addPoints('A', jugador, 3)">3</button>
+                            <button class="btn btn-small btn-danger"  ng-click="removePoints('A', jugador, 1)">1</button>
                         </td>
                         <td>{{jugador.fouls}}</td>
                         <td>
-                            <a class="btn btn-small btn-success"  href="#" ng-click="addFoul('A',jugador, 1)">1</a>
-                            <a class="btn btn-small btn-danger"  href="#" ng-click="removeFoul('A',jugador, 1)">1</a>
+                            <button class="btn btn-small btn-success" ng-click="addFoul('A', jugador, 1)">1</button>
+                            <button class="btn btn-small btn-danger"  ng-click="removeFoul('A', jugador, 1)">1</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <table class="table table-bordered" >
-                 <thead>
+                <thead>
                     <tr>
                         <th colspan="6">EQUIPO B</th>
                     </tr>
@@ -112,20 +112,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                     <tr ng-repeat="jugador in equipoB">
+                    <tr ng-repeat="jugador in equipoB">
                         <td>{{jugador.member.number}}</td>
                         <td>{{jugador.member.name}}</td>
                         <td>{{jugador.points}}</td>
                         <td>
-                            <a class="btn btn-small btn-success"  href="#" ng-click="addPoints('B',jugador, 1)">1</a>
-                            <a class="btn btn-small btn-success"  href="#" ng-click="addPoints('B',jugador, 2)">2</a>
-                            <a class="btn btn-small btn-success"  href="#" ng-click="addPoints('B',jugador, 3)">3</a>
-                            <a class="btn btn-small btn-danger"  href="#" ng-click="removePoints('B',jugador, 1)">1</a>
+                            <button class="btn btn-small btn-success" ng-click="addPoints('B', jugador, 1)">1</button>
+                            <button class="btn btn-small btn-success" ng-click="addPoints('B', jugador, 2)">2</button>
+                            <button class="btn btn-small btn-success" ng-click="addPoints('B', jugador, 3)">3</button>
+                            <button class="btn btn-small btn-danger"  ng-click="removePoints('B', jugador, 1)">1</button>
                         </td>
                         <td>{{jugador.fouls}}</td>
                         <td>
-                            <a class="btn btn-small btn-success"  href="#" ng-click="addFoul('B',jugador, 1)">1</a>
-                            <a class="btn btn-small btn-danger"  href="#" ng-click="removeFoul('B',jugador, 1)">1</a>
+                            <button class="btn btn-small btn-success"  ng-click="addFoul('B', jugador, 1)">1</button>
+                            <button class="btn btn-small btn-danger"  ng-click="removeFoul('B', jugador, 1)">1</button>
                         </td>
                     </tr>
                 </tbody>
