@@ -81,15 +81,15 @@
                     </tr>
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
-                        <th colspan="2">Pts</th>
+                        <th>NOMBRE</th>
+                        <th colspan="2">PTS</th>
                         <th colspan="2">F</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="jugador in equipoA">
                         <td ng-click="removePlayerFromTeam(jugador)">{{jugador.member.number}}</td>
-                        <td>{{jugador.member.name}}</td>
+                        <td>{{jugador.member.name}}<br />{{jugador.member.lastname}}</td>
                         <td>{{jugador.points}}</td>
                         <td>
                             <button class="btn btn-small btn-success"  ng-click="addPoints('A', jugador, 1)">1</button>
@@ -112,15 +112,15 @@
                     </tr>
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
-                        <th colspan="2">Pts</th>
+                        <th>NOMBRE</th>
+                        <th colspan="2">PTS</th>
                         <th colspan="2">F</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="jugador in equipoB">
                         <td ng-click="removePlayerFromTeam(jugador)">{{jugador.member.number}}</td>
-                        <td>{{jugador.member.name}}</td>
+                        <td>{{jugador.member.name}}<br />{{jugador.member.lastname}}</td>
                         <td>{{jugador.points}}</td>
                         <td>
                             <button class="btn btn-small btn-success" ng-click="addPoints('B', jugador, 1)">1</button>
