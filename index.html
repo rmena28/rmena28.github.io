@@ -15,6 +15,7 @@
             }
             .table{
                 font-size:10px !important;
+                margin-bottom: 8px !important;
             }
         </style>
     </head>
@@ -27,13 +28,13 @@
                             JUGADORES 
                         </th>
                     </tr>
-                    <tr class="hideable">
+                    <tr style="display: none;" class="hideable">
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Add to team</th>
                     </tr>
                 </thead>
-                <tbody class="hideable">
+                <tbody class="hideable" style="display: none;">
                     <tr ng-repeat="member in members" ng-click="selectCurrent(member)">
                         <td>{{member.number}}</td>
                         <td>{{member.name}} {{member.lastName}}</td>
@@ -46,7 +47,7 @@
             </table>
             <table class="table table-bordered" >
                 <thead>
-                    <tr>
+                    <tr >
                         <th>
                             TEAM
                         </th>
@@ -59,22 +60,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Equipo A</td>
+                    <tr style="background-color: black;color:white;">
+                        <td>EQUIPO NEGRO</td>
                         <td>{{pointsA}}</td>
                         <td>{{foulsA}}</td>
                     </tr>
-                    <tr>
-                        <td>Equipo B</td>
+                    <tr style="background: gray;color:white;">
+                        <td>EQUIPO GRIS</td>
                         <td>{{pointsB}}</td>
                         <td>{{foulsB}}</td>
                     </tr>
                 </tbody>
             </table>
+            
             <table class="table table-bordered" >
                 <thead>
-                    <tr>
-                        <th colspan="6">EQUIPO A</th>
+                    <tr style="background-color: black;color:white;">
+                        <th colspan="6" style="text-align: center;">EQUIPO NEGRO</th>
                     </tr>
                     <tr>
                         <th>#</th>
@@ -104,8 +106,8 @@
             </table>
             <table class="table table-bordered" >
                 <thead>
-                    <tr>
-                        <th colspan="6">EQUIPO B</th>
+                    <tr style="background: gray;color:white;">
+                        <th colspan="6" style="text-align: center;">EQUIPO GRIS</th>
                     </tr>
                     <tr>
                         <th>#</th>
@@ -133,6 +135,9 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="pull-right" style="margin-bottom: 5px;">
+                <button ng-click="reset()" class="btn btn-success">JUEGO NUEVO</button>
+            </div>
         </div>
     </body>
 </html>
