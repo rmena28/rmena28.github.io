@@ -72,21 +72,21 @@ var userController = app.controller('userController', function ($scope, $http) {
         for (i = 0; i < $scope.equipoB.length; i++) {
             var jugador = $scope.equipoB[i];
             if (jugador.member.number === member.number) {
-                alert(member.name + ' ya existe en equipo B');
+                alert(member.name + ' ya existe en NEGRO');
                 return;
             }
         }
         for (i = 0; i < $scope.equipoA.length; i++) {
             var jugador = $scope.equipoA[i];
             if (jugador.member.number === member.number) {
-                alert(member.name + ' ya existe en equipo A');
+                alert(member.name + ' ya existe en GRIS');
                 return;
             }
         }
         if ($scope.equipoA.length < 5) {
             $scope.equipoA.push(player);
         } else {
-            alert('Ya hay 5 jugadores en el equipo A');
+            alert('Ya hay 5 jugadores en el GRIS');
         }
         saveCurrentGame();
     };
@@ -259,21 +259,21 @@ var userController = app.controller('userController', function ($scope, $http) {
         for (i = 0; i < $scope.equipoB.length; i++) {
             var jugador = $scope.equipoB[i];
             if (jugador.member.number === member.number) {
-                alert(member.name + ' ya existe en equipo B');
+                alert(member.name + ' ya existe en equipo NEGRO');
                 return;
             }
         }
         for (i = 0; i < $scope.equipoA.length; i++) {
             var jugador = $scope.equipoA[i];
             if (jugador.member.number === member.number) {
-                alert(member.name + ' ya existe en equipo A');
+                alert(member.name + ' ya existe en equipo GRIS');
                 return;
             }
         }
         if ($scope.equipoB.length < 5) {
             $scope.equipoB.push(player);
         } else {
-            alert('Ya hay 5 jugadores en el equipo B');
+            alert('Ya hay 5 jugadores en el equipo NEGRO');
         }
         saveCurrentGame();
     };
