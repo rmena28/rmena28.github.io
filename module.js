@@ -183,6 +183,9 @@ var userController = app.controller('userController', function ($scope, $http) {
         if ($scope.sec === undefined || $scope.sec === null || isNaN($scope.sec)) {
             $scope.sec = 0;
         }
+        if($scope.intervalId){
+            clearInterval($scope.intervalId);
+        }
     }
 
 
