@@ -138,18 +138,20 @@
             </table>
             <table style="width: 100%;">
                 <tr>
-                    <td id="timer">
-                        {{min}}:{{sec}}
+                    <td id="timer" style="font-weight: bold;font-size:30px;">
+                        {{min|number: 0}}:{{sec}}
                     </td>
-                    <td>
-                        <button  class="btn btn-success" id="start-stop-button" ng-click="start()">Play</button>
-                        <button class="btn btn-info" ng-click="setTimer(10)">10M</button>
-                        <button class="btn btn-info" ng-click="setTimer(12)">12M</button>
-                        <button class="btn btn-info" ng-click="setTimer(2)">2M</button>
-                        <button class="btn btn-info" ng-click="setTimer(0)">Otro</button>
+                    <td style="text-align: right;">
+                        <button  class="btn btn-success" id="start-stop-button" ng-click="start()">Start</button>
                     </td>
-                    <td>
-                        <button ng-click="reset()" class="btn btn-success">Reiniciar</button>
+                    <td style="text-align: right;">
+                        <button class="btn btn-info" ng-click="setTimer(10)">10</button>
+                        <button class="btn btn-info" ng-click="setTimer(12)">12</button>
+                        <button class="btn btn-info" ng-click="setTimer(2)">2</button>
+                        <button class="btn btn-info" ng-click="setTimer(0)">+</button>
+                    </td>
+                    <td style="text-align: right;">
+                        <button ng-click="reset()" class="btn btn-success">R</button>
                     </td>
                 </tr>
             </table>
