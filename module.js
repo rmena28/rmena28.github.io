@@ -17,35 +17,35 @@ var userController = app.controller('userController', function ($scope, $http) {
 
     if ($scope.members === undefined || $scope.members === null) {
         $scope.members = [
-            {number: 1, name: 'Jonas', lastname: 'Estepan'},
-            {number: 2, name: 'Ramon', lastname: 'Mena'},
-            {number: 3, name: 'Omar', lastname: 'Guzman'},
-            {number: 6, name: 'Leonal', lastname: 'Hernandez'},
-            {number: 7, name: 'Stharling', lastname: 'Subi'},
-            {number: 8, name: 'Luis', lastname: 'Florentino'},
-            {number: 10, name: 'Jean', lastname: 'Jimenez'},
-            {number: 12, name: 'Rafael', lastname: 'Perez'},
-            {number: 13, name: 'Carlos', lastname: 'Garcia'},
-            {number: 15, name: 'Kenneth', lastname: 'Aponte'},
-            {number: 18, name: 'Marcos', lastname: 'Vasquez'},
-            {number: 18, name: 'Jose', lastname: 'Moya'},
-            {number: 20, name: 'Gabriel', lastname: 'Ferrarese'},
-            {number: 21, name: 'Emanuel', lastname: 'Medrano'},
-            {number: 23, name: 'Snailin', lastname: 'Inoa'},
-            {number: 24, name: 'Hamlet', lastname: 'Maldonado'},
-            {number: 26, name: 'Aneudy', lastname: 'Mota'},
-            {number: 27, name: 'Andres', lastname: 'Tejada'},
-            {number: 28, name: 'Luis', lastname: 'Santana'},
-            {number: 30, name: 'Alison', lastname: 'Perez'},
-            {number: 32, name: 'Eudys', lastname: 'Bautista'},
-            {number: 33, name: 'Juan', lastname: 'Cordero'},
-            {number: 35, name: 'Reynold', lastname: 'Duran'},
-            {number: 41, name: 'Benjamin', lastname: 'Lizardo'},
-            {number: 45, name: 'Jose', lastname: 'Mercado'},
-            {number: 77, name: 'Rhonniel', lastname: 'Mercado'},
-            {number: 82, name: 'Alberto', lastname: 'Bautista'},
-            {number: 84, name: 'Charles', lastname: 'Antigua'},
-            {number: 87, name: 'Rudy', lastname: 'Matos'}
+            {id: 1, number: 1, name: 'Jonas', lastname: 'Estepan'},
+            {id: 2, number: 2, name: 'Ramon', lastname: 'Mena'},
+            {id: 3, number: 3, name: 'Omar', lastname: 'Guzman'},
+            {id: 6, number: 6, name: 'Leonal', lastname: 'Hernandez'},
+            {id: 7, number: 7, name: 'Stharling', lastname: 'Subi'},
+            {id: 8, number: 8, name: 'Luis', lastname: 'Florentino'},
+            {id: 10, number: 10, name: 'Jean', lastname: 'Jimenez'},
+            {id: 12, number: 12, name: 'Rafael', lastname: 'Perez'},
+            {id: 13, number: 13, name: 'Carlos', lastname: 'Garcia'},
+            {id: 15, number: 15, name: 'Kenneth', lastname: 'Aponte'},
+            {id: 81, number: 18, name: 'Marcos', lastname: 'Vasquez'},
+            {id: 18, number: 18, name: 'Jose', lastname: 'Moya'},
+            {id: 20, number: 20, name: 'Gabriel', lastname: 'Ferrarese'},
+            {id: 21, number: 21, name: 'Emanuel', lastname: 'Medrano'},
+            {id: 23, number: 23, name: 'Snailin', lastname: 'Inoa'},
+            {id: 24, number: 24, name: 'Hamlet', lastname: 'Maldonado'},
+            {id: 26, number: 26, name: 'Aneudy', lastname: 'Mota'},
+            {id: 27, number: 27, name: 'Andres', lastname: 'Tejada'},
+            {id: 28, number: 28, name: 'Luis', lastname: 'Santana'},
+            {id: 30, number: 30, name: 'Alison', lastname: 'Perez'},
+            {id: 32, number: 32, name: 'Eudys', lastname: 'Bautista'},
+            {id: 33, number: 33, name: 'Juan', lastname: 'Cordero'},
+            {id: 35, number: 35, name: 'Reynold', lastname: 'Duran'},
+            {id: 41, number: 41, name: 'Benjamin', lastname: 'Lizardo'},
+            {id: 45, number: 45, name: 'Jose', lastname: 'Mercado'},
+            {id: 77, number: 77, name: 'Rhonniel', lastname: 'Mercado'},
+            {id: 82, number: 82, name: 'Alberto', lastname: 'Bautista'},
+            {id: 84, number: 84, name: 'Charles', lastname: 'Antigua'},
+            {id: 87, number: 87, name: 'Rudy', lastname: 'Matos'}
         ];
     }
 
@@ -71,15 +71,15 @@ var userController = app.controller('userController', function ($scope, $http) {
         player.fouls = 0;
         for (i = 0; i < $scope.equipoB.length; i++) {
             var jugador = $scope.equipoB[i];
-            if (jugador.member.number === member.number) {
-                alert(member.name + ' ya existe en NEGRO');
+            if (jugador.member.id === member.id) {
+                alert(member.name + ' ya existe en el equipo GRIS');
                 return;
             }
         }
         for (i = 0; i < $scope.equipoA.length; i++) {
             var jugador = $scope.equipoA[i];
-            if (jugador.member.number === member.number) {
-                alert(member.name + ' ya existe en GRIS');
+            if (jugador.member.id === member.id) {
+                alert(member.name + ' ya existe en el equipo NEGRO');
                 return;
             }
         }
@@ -185,7 +185,7 @@ var userController = app.controller('userController', function ($scope, $http) {
         if ($scope.sec === undefined || $scope.sec === null || isNaN($scope.sec)) {
             $scope.sec = 0;
         }
-        if($scope.intervalId){
+        if ($scope.intervalId) {
             clearInterval($scope.intervalId);
         }
     }
@@ -197,7 +197,7 @@ var userController = app.controller('userController', function ($scope, $http) {
             document.getElementById('start-stop-button').innerHTML = "Pause";
             $scope.intervalId = setInterval(function () {
                 console.log($scope.sec + " " + $scope.min);
-                
+
                 if ($scope.sec === 0 && $scope.min === 0) {
                     alert('Juego Terminado');
                     document.getElementById('start-stop-button').innerHTML = "Start";
@@ -206,7 +206,7 @@ var userController = app.controller('userController', function ($scope, $http) {
                 }
                 if ($scope.sec > 0) {
                     $scope.sec--;
-                }else if ($scope.sec === 0) {
+                } else if ($scope.sec === 0) {
                     $scope.sec = 59;
                     $scope.min--;
                 }
@@ -260,22 +260,22 @@ var userController = app.controller('userController', function ($scope, $http) {
         player.fouls = 0;
         for (i = 0; i < $scope.equipoB.length; i++) {
             var jugador = $scope.equipoB[i];
-            if (jugador.member.number === member.number) {
-                alert(member.name + ' ya existe en equipo NEGRO');
+            if (jugador.member.id === member.id) {
+                alert(member.name + ' ya existe en el equipo GRIS');
                 return;
             }
         }
         for (i = 0; i < $scope.equipoA.length; i++) {
             var jugador = $scope.equipoA[i];
-            if (jugador.member.number === member.number) {
-                alert(member.name + ' ya existe en equipo GRIS');
+            if (jugador.member.id === member.id) {
+                alert(member.name + ' ya existe en el equipo NEGRO');
                 return;
             }
         }
         if ($scope.equipoB.length < 5) {
             $scope.equipoB.push(player);
         } else {
-            alert('Ya hay 5 jugadores en el equipo NEGRO');
+            alert('Ya hay 5 jugadores en el equipo GRIS');
         }
         saveCurrentGame();
     };
