@@ -73,7 +73,7 @@
                     </tr>
                 </tbody>
             </table>
-            
+
             <table class="table table-bordered" >
                 <thead>
                     <tr style="background-color: black;color:white;">
@@ -94,7 +94,7 @@
                         <td>
                             <button class="btn btn-small btn-success"  ng-click="addPoints('A', jugador, 1)">1</button>
                             <button class="btn btn-small btn-success" ng-click="addPoints('A', jugador, 2)">2</button>
-<!--                            <button class="btn btn-small btn-success" ng-click="addPoints('A', jugador, 3)">3</button>-->
+                            <!--                            <button class="btn btn-small btn-success" ng-click="addPoints('A', jugador, 3)">3</button>-->
                             <button class="btn btn-small btn-danger"  ng-click="removePoints('A', jugador, 1)">1</button>
                         </td>
                         <td>{{jugador.fouls}}</td>
@@ -125,7 +125,7 @@
                         <td>
                             <button class="btn btn-small btn-success" ng-click="addPoints('B', jugador, 1)">1</button>
                             <button class="btn btn-small btn-success" ng-click="addPoints('B', jugador, 2)">2</button>
-<!--                            <button class="btn btn-small btn-success" ng-click="addPoints('B', jugador, 3)">3</button>-->
+                            <!--                            <button class="btn btn-small btn-success" ng-click="addPoints('B', jugador, 3)">3</button>-->
                             <button class="btn btn-small btn-danger"  ng-click="removePoints('B', jugador, 1)">1</button>
                         </td>
                         <td>{{jugador.fouls}}</td>
@@ -136,9 +136,24 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="pull-right" style="margin-bottom: 5px;">
-                <button ng-click="reset()" class="btn btn-success">JUEGO NUEVO</button>
-            </div>
+            <table style="width: 100%;">
+                <tr>
+                    <td id="timer">
+                        {{min}}:{{sec}}
+                    </td>
+                    <td>
+                        <button  class="btn btn-success" id="start-stop-button" ng-click="start()">Play</button>
+                        <button class="btn btn-info" ng-click="setTimer(10)">10M</button>
+                        <button class="btn btn-info" ng-click="setTimer(12)">12M</button>
+                        <button class="btn btn-info" ng-click="setTimer(2)">2M</button>
+                        <button class="btn btn-info" ng-click="setTimer(0)">Otro</button>
+                    </td>
+                    <td>
+                        <button ng-click="reset()" class="btn btn-success">Reiniciar</button>
+                    </td>
+                </tr>
+            </table>
+
         </div>
     </body>
 </html>
