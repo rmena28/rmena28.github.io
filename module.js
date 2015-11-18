@@ -93,10 +93,20 @@ var userController = app.controller('userController', function ($scope, $http) {
     $scope.removePlayerFromTeam = function (player) {
         var index = $scope.equipoA.indexOf(player);
         if (index > -1) {
+//            var array = $scope.equipoA;
+//            $scope.equipoA = [];
+//            array.slice(index, 1);
+//            console.log(array);
+//            $scope.equipoA = $scope.equipoA.concat(array);
+//            console.log($scope.equipoA);
             $scope.equipoA.splice(index, 1);
         } else {
             index = $scope.equipoB.indexOf(player);
             if (index > -1) {
+//                var array = $scope.equipoB;
+//                $scope.equipoB = [];
+//                array.slice(index, 1);
+//                $scope.equipoB = $scope.equipoB.concat(array);
                 $scope.equipoB.splice(index, 1);
             }
         }
@@ -123,6 +133,11 @@ var userController = app.controller('userController', function ($scope, $http) {
         }
     };
 
+    $scope.saveCurrentGame = function () {
+        saveCurrentGame();
+        console.log($scope.equipoA);
+        console.log($scope.equipoB);
+    }
     function saveCurrentGame() {
         localStorage.setItem('teamA', JSON.stringify($scope.equipoA));
         localStorage.setItem('teamB', JSON.stringify($scope.equipoB));
