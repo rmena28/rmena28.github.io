@@ -13,6 +13,14 @@
                 /*padding: 4px 7px !important;*/
                 font-size: 10px !important;
             }
+            .btn-black{
+                background-color: black;
+                color: white;
+            }
+            .btn-gray{
+                background-color: gray;
+                color: white;
+            }
             .table{
                 font-size:8px !important;
                 margin-bottom: 8px !important;
@@ -40,8 +48,8 @@
                         <td>{{member.number}}</td>
                         <td>{{member.name}} {{member.lastname}}</td>
                         <td>
-                            <button class="btn btn-info" ng-click="addUserTeamA(member)">+A</button>
-                            <button class="btn btn-info" ng-click="addUserTeamB(member)">+B</button>
+                            <button class="btn btn-gray" ng-click="addUserTeamA(member)">+G</button>
+                            <button class="btn btn-black" ng-click="addUserTeamB(member)">+N</button>
                         </td>
                     </tr>
                 </tbody>
