@@ -122,6 +122,8 @@ var userController = app.controller('userController', function ($scope, $http) {
             localStorage.removeItem('pointsB');
             localStorage.removeItem('foulsA');
             localStorage.removeItem('foulsB');
+            localStorage.removeItem('min');
+            localStorage.removeItem('sec');
 
             $scope.equipoA = [];
             $scope.equipoB = [];
