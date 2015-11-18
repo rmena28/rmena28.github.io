@@ -191,16 +191,19 @@ var userController = app.controller('userController', function ($scope, $http) {
         if (!$scope.isTimer) {
             document.getElementById('start-stop-button').innerHTML = "Pause";
             $scope.intervalId = setInterval(function () {
-
+                console.log($scope.sec + " " + $scope.min);
+                
                 if ($scope.sec === 0 && $scope.min === 0) {
                     alert('Juego Terminado');
+                    document.getElementById('start-stop-button').innerHTML = "Start";
+                    stop();
+                    return;
                 }
                 if ($scope.sec > 0) {
                     $scope.sec--;
-                }
-                if ($scope.sec === 0) {
-                    $scope.min--;
+                }else if ($scope.sec === 0) {
                     $scope.sec = 59;
+                    $scope.min--;
                 }
 
                 var sec = $scope.sec;
@@ -245,7 +248,18 @@ var userController = app.controller('userController', function ($scope, $http) {
 
     function stop() {
         $scope.isTimer = false;
+
         clearInterval($scope.intervalId);
+
+        var sec = $scope.sec;
+        var min = $scope.min;
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+        if (min < 10) {
+            min = "0" + min;
+        }
+        document.getElementById("timer").innerHTML = min + ":" + sec;
     }
     ;
 
