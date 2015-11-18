@@ -206,15 +206,7 @@ var userController = app.controller('userController', function ($scope, $http) {
                     $scope.min--;
                 }
 
-                var sec = $scope.sec;
-                var min = $scope.min;
-                if (sec < 10) {
-                    sec = "0" + sec;
-                }
-                if (min < 10) {
-                    min = "0" + min;
-                }
-                document.getElementById("timer").innerHTML = min + ":" + sec;
+                document.getElementById("timer").innerHTML = $scope.min + "m" + $scope.sec + "s";
                 saveCurrentGame();
             }, 1000);
             $scope.isTimer = true;
@@ -250,16 +242,7 @@ var userController = app.controller('userController', function ($scope, $http) {
         $scope.isTimer = false;
 
         clearInterval($scope.intervalId);
-
-        var sec = $scope.sec;
-        var min = $scope.min;
-        if (sec < 10) {
-            sec = "0" + sec;
-        }
-        if (min < 10) {
-            min = "0" + min;
-        }
-        document.getElementById("timer").innerHTML = min + ":" + sec;
+        document.getElementById("timer").innerHTML = min + "m " + sec + "s";
     }
     ;
 
