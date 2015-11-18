@@ -5,6 +5,7 @@ var userController = app.controller('userController', function ($scope, $http) {
     restoreCurrentGame();
     $scope.createMember = {};
     $scope.selectedPlayer = {};
+    $scope.isTimer = false;
 
     if ($scope.equipoA === undefined || $scope.equipoA === null) {
         $scope.equipoA = [];
@@ -129,6 +130,10 @@ var userController = app.controller('userController', function ($scope, $http) {
             $scope.foulsB = 0;
             $scope.foulsA = 0;
 
+            $scope.min = 12;
+            $scope.sec = 0;
+            $scope.isTimer = false;
+
             $('.hideable').show();
         }
     };
@@ -145,7 +150,8 @@ var userController = app.controller('userController', function ($scope, $http) {
         localStorage.setItem('pointsB', $scope.pointsB);
         localStorage.setItem('foulsA', $scope.foulsA);
         localStorage.setItem('foulsB', $scope.foulsB);
-
+        localStorage.setItem('min', $scope.min);
+        localStorage.setItem('sec', $scope.sec);
     }
 
     function restoreCurrentGame() {
@@ -169,7 +175,81 @@ var userController = app.controller('userController', function ($scope, $http) {
         if ($scope.foulsA === undefined || $scope.foulsA === null || isNaN($scope.foulsA)) {
             $scope.foulsA = 0;
         }
+        $scope.min = parseInt(localStorage.getItem('min'));
+        if ($scope.min === undefined || $scope.min === null || isNaN($scope.min)) {
+            $scope.min = 10;
+        }
+        $scope.sec = parseInt(localStorage.getItem('sec'));
+        if ($scope.sec === undefined || $scope.sec === null || isNaN($scope.sec)) {
+            $scope.sec = 0;
+        }
     }
+
+
+
+    $scope.start = function () {
+        if (!$scope.isTimer) {
+            document.getElementById('start-stop-button').innerHTML = "Pause";
+            $scope.intervalId = setInterval(function () {
+
+                if ($scope.sec === 0 && $scope.min === 0) {
+                    alert('Juego Terminado');
+                }
+                if ($scope.sec > 0) {
+                    $scope.sec--;
+                }
+                if ($scope.sec === 0) {
+                    $scope.min--;
+                    $scope.sec = 59;
+                }
+
+                var sec = $scope.sec;
+                var min = $scope.min;
+                if (sec < 10) {
+                    sec = "0" + sec;
+                }
+                if (min < 10) {
+                    min = "0" + min;
+                }
+                document.getElementById("timer").innerHTML = min + ":" + sec;
+                saveCurrentGame();
+            }, 1000);
+            $scope.isTimer = true;
+        } else {
+            document.getElementById('start-stop-button').innerHTML = "Resume";
+            stop();
+        }
+    };
+
+    $scope.setTimer = function (mins) {
+        if (mins === 0) {
+            mins = parseInt(prompt("Cantidad de Minutos?"));
+        }
+        var confirmation = confirm("Esta seguro que desea establecer el timer a " + mins);
+        if (confirmation) {
+            $scope.sec = 0;
+            $scope.min = mins;
+            if ($scope.isTimer) {
+                $scope.isTimer = false;
+                clearInterval($scope.intervalId);
+            }
+        }
+    }
+
+    function format(value) {
+        if (value < 10) {
+            return "0" + value;
+        }
+    }
+
+
+    function stop() {
+        $scope.isTimer = false;
+        clearInterval($scope.intervalId);
+    }
+    ;
+
+
 
     $scope.addUserTeamB = function (member) {
         var player = {};
